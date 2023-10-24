@@ -1,25 +1,25 @@
 ## README
 
-Bonjour ! 
-On vous met à disposition le script qu'on utilise pour afficher l'ensemble de Mandelbrot et de Julia :)
+Hello!
 
-# Fonctionnement:
+We provide you with the script we use to visualize the entire Mandelbrot and Julia sets.
 
-La commande **MandelbrotPlot -o mandelbrot.png** affiche l'ensemble de Mandelbrot et l'enregistre dans une image nommée "mandelbrot". 
-La commande **MandelbrotPlot --zmin=-0.7440+0.1305j --zmax=-0.7425+0.1320j --pixel_size=5e-6 --max-iter=50 -o Mandelbrot_tentacle.png** affiche les nombres complexes compris entre zmin et zmax qui appartiennent à l'ensemble de Mandelbrot et l'enregistre dans une image nommée Mandelbrot_tentacle.
+# Operation:
 
-Les mêmes commande sont accessible pour l'ensemble de Julia, seulement vous pourrez préciser si vous le souhaitez le paramètre c (-c 0.251 par exemple).
+The command **MandelbrotPlot -o mandelbrot.png** displays the Mandelbrot set and saves it as an image named "mandelbrot."
+The command **MandelbrotPlot --zmin=-0.7440+0.1305j --zmax=-0.7425+0.1320j --pixel_size=5e-6 --max-iter=50 -o Mandelbrot_tentacle.png** displays the complex numbers between zmin and zmax that belong to the Mandelbrot set and saves them in an image named Mandelbrot_tentacle.
 
-# Aide:
+The same commands are available for the Julia set. You can specify the c parameter if you wish (e.g., -c 0.251).
 
-La commande **MandelbrotPlot -h** ainsi que la commande **JuliaPlot -h** vous permettent d'obtenir plus d'informations.
+# Help:
 
-Pour que le temps d'attente ne soit pas trop long, on recommande de choisir une taille de pixel adaptée.
-Par exemple:
- -- une taille de pixel de l'ordre de 5e-6 conviendra pour afficher l'ensemble de Mandelbrot. 
- -- une taille de pixel de l'ordre de 5e-3 conviendra pour afficher l'ensemble de Julia.
+The command **MandelbrotPlot -h** and the command **JuliaPlot -h** provide you with more information.
 
-La biblipthèque utilise numpy, Pillow et des tests unitaires peuvent être fait avec Pytest.
+To avoid excessive waiting times, we recommend selecting an appropriate pixel size. For example:
+ - A pixel size on the order of 5e-6 is suitable for displaying the Mandelbrot set.
+ - A pixel size on the order of 5e-3 is suitable for displaying the Julia set.
+
+The library uses numpy, Pillow, and unit tests can be conducted using Pytest.
 
 
 # Documentation:
