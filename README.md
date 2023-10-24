@@ -21,3 +21,23 @@ Par exemple:
 
 La biblipthèque utilise numpy, Pillow et des tests unitaires peuvent être fait avec Pytest.
 
+
+# Documentation:
+Documentation is readily accessible as I have created an automated one using Sphinx. To access it, follow these steps:
+
+1. Navigate to the "doc" directory using the command:
+   ```bash
+   cd doc
+   ```
+
+2. Start a local web server to host the documentation using Python's `http.server` module:
+   ```bash
+   python -m http.server
+   ```
+
+3. Once the server is up and running, you can access the documentation by opening a web browser and entering the following address:
+   ```
+   http://localhost:8000/
+   ```
+
+This will allow you to explore the documentation locally on your machine. You'll find detailed information on how to use the software, its features, and other relevant information.
