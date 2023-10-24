@@ -1,0 +1,192 @@
+
+
+<!doctype html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TP4.helper &#8212; Documentation TP4 1.0</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bizstyle.css" />
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <script src="../../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../search.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Index général"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Index des modules Python"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Documentation TP4 1.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Code du module</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">TP4.helper</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Code source de TP4.helper</h1><div class="highlight"><pre>
+<span></span><span class="c1">#helper.py</span>
+<span class="sd">&quot;&quot;&quot; pour notre premier projet&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<div class="viewcode-block" id="suite"><a class="viewcode-back" href="../../TP4.html#TP4.helper.suite">[docs]</a><span class="k">def</span> <span class="nf">suite</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">complex</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Générateur des éléments de la suite $z_{n+1}=z_n^2+c$&quot;&quot;&quot;</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">z</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">z</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">c</span></div>
+
+<div class="viewcode-block" id="suite_mandelbrot"><a class="viewcode-back" href="../../TP4.html#TP4.helper.suite_mandelbrot">[docs]</a><span class="k">def</span> <span class="nf">suite_mandelbrot</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Renvoie la suite de Mandelbrot&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">suite</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="suite_julia"><a class="viewcode-back" href="../../TP4.html#TP4.helper.suite_julia">[docs]</a><span class="k">def</span> <span class="nf">suite_julia</span><span class="p">(</span><span class="n">zandidat</span><span class="p">,</span><span class="n">carametre</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">complex</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Renvoie la suite de julia pour candidat et parametre&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">suite</span><span class="p">(</span><span class="n">zandidat</span><span class="p">,</span><span class="n">carametre</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="is_in_Mandelbrot"><a class="viewcode-back" href="../../TP4.html#TP4.helper.is_in_Mandelbrot">[docs]</a><span class="k">def</span> <span class="nf">is_in_Mandelbrot</span><span class="p">(</span><span class="n">c</span><span class="o">=</span><span class="mf">0.251</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Renvoie si un complexe appartient à l&#39;ensemble de Mandelbrot</span>
+<span class="sd">    &gt;&gt;&gt; is_in_Mandelbrot(c=0.251)</span>
+<span class="sd">    False</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">compteur</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">suite_mandelbrot</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">compteur</span> <span class="o">==</span> <span class="n">max_iter</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="n">compteur</span> <span class="o">+=</span> <span class="mi">1</span></div>
+
+<div class="viewcode-block" id="is_in_Julia"><a class="viewcode-back" href="../../TP4.html#TP4.helper.is_in_Julia">[docs]</a><span class="k">def</span> <span class="nf">is_in_Julia</span><span class="p">(</span><span class="n">z</span><span class="o">=</span><span class="mf">0.25</span><span class="o">+</span><span class="mf">0.25</span><span class="n">j</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">200</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Renvoie si un complexe z appartient à l&#39;ensemble de Julia pour c fixé</span>
+<span class="sd">    &gt;&gt;&gt; is_in_Julia(z=0.25+0.25j,c=0.25)</span>
+<span class="sd">    True</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">eps</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">i</span><span class="o">=</span><span class="mi">0</span>
+    <span class="n">converge</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="n">suite_julia</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">c</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">max_iter</span> <span class="p">:</span>
+            <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="p">:</span> 
+                <span class="k">return</span><span class="p">(</span><span class="ow">not</span> <span class="n">converge</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">max_iter</span> <span class="p">:</span>
+            <span class="k">return</span><span class="p">(</span><span class="n">converge</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="plot_mandelbrot"><a class="viewcode-back" href="../../TP4.html#TP4.helper.plot_mandelbrot">[docs]</a><span class="k">def</span> <span class="nf">plot_mandelbrot</span><span class="p">(</span>
+        <span class="n">zmin</span><span class="o">=</span><span class="nb">complex</span><span class="p">(</span><span class="o">-</span><span class="mf">0.7440</span> <span class="o">+</span> <span class="mf">0.1305</span><span class="n">j</span><span class="p">),</span>
+        <span class="n">zmax</span><span class="o">=</span><span class="nb">complex</span><span class="p">(</span><span class="o">-</span><span class="mf">0.7425</span> <span class="o">+</span> <span class="mf">0.1320</span><span class="n">j</span><span class="p">),</span>
+        <span class="n">pixel_size</span><span class="o">=</span><span class="mf">5e-6</span><span class="p">,</span>
+        <span class="n">max_iter</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+        <span class="n">figname</span><span class="o">=</span><span class="s2">&quot;Mandelbrot.png&quot;</span><span class="p">):</span> 
+    <span class="sd">&quot;&quot;&quot;Affiche les nombres complexes compris entre zmin et zmax qui appartiennent à l&#39;ensemble de Mandelbrot&quot;&quot;&quot;</span>
+
+    <span class="n">xmin</span> <span class="o">=</span> <span class="n">zmin</span><span class="o">.</span><span class="n">real</span>
+    <span class="n">xmax</span> <span class="o">=</span> <span class="n">zmax</span><span class="o">.</span><span class="n">real</span>
+    <span class="n">ymin</span> <span class="o">=</span> <span class="n">zmin</span><span class="o">.</span><span class="n">imag</span>
+    <span class="n">ymax</span> <span class="o">=</span> <span class="n">zmax</span><span class="o">.</span><span class="n">imag</span>
+
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">pixel_size</span><span class="p">)</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">pixel_size</span><span class="p">)</span>
+    <span class="n">Matrice</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span> <span class="o">+</span> <span class="n">Y</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="o">*</span> <span class="mi">1</span><span class="n">j</span>
+
+    <span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">is_in_Mandelbrot</span><span class="p">)</span>
+
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">g</span><span class="p">(</span><span class="n">Matrice</span><span class="p">,</span> <span class="n">max_iter</span><span class="p">)</span>  <span class="c1"># étape la plus couteuse du code...</span>
+    <span class="n">im</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="kc">True</span> <span class="o">^</span> <span class="n">mask</span><span class="p">)</span>
+
+    <span class="n">im</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">im</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">figname</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="plot_julia"><a class="viewcode-back" href="../../TP4.html#TP4.helper.plot_julia">[docs]</a><span class="k">def</span> <span class="nf">plot_julia</span><span class="p">(</span><span class="n">c</span><span class="o">=-</span><span class="mf">0.8</span> <span class="o">+</span> <span class="mf">0.156</span><span class="n">j</span><span class="p">,</span>
+                <span class="n">zmin</span><span class="o">=-</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="p">,</span>
+                <span class="n">zmax</span><span class="o">=</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span><span class="p">,</span>
+                <span class="n">pixel_size</span><span class="o">=</span><span class="mf">5e-3</span><span class="p">,</span>
+                <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+                <span class="n">figname</span><span class="o">=</span><span class="s2">&quot;Julia.png&quot;</span><span class="p">):</span> 
+    <span class="sd">&quot;&quot;&quot;Affiche les nombres complexes compris entre zmin et zmax qui appartiennent à l&#39;ensemble de Julia pour c fixé&quot;&quot;&quot;</span>
+
+    <span class="n">xmin</span> <span class="o">=</span> <span class="n">zmin</span><span class="o">.</span><span class="n">real</span>
+    <span class="n">xmax</span> <span class="o">=</span> <span class="n">zmax</span><span class="o">.</span><span class="n">real</span>
+    <span class="n">ymin</span> <span class="o">=</span> <span class="n">zmin</span><span class="o">.</span><span class="n">imag</span>
+    <span class="n">ymax</span> <span class="o">=</span> <span class="n">zmax</span><span class="o">.</span><span class="n">imag</span>
+
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">pixel_size</span><span class="p">)</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">pixel_size</span><span class="p">)</span>
+    <span class="n">Matrice</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span> <span class="o">+</span> <span class="n">Y</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="o">*</span> <span class="mi">1</span><span class="n">j</span>
+
+    <span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">is_in_Julia</span><span class="p">)</span>
+
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">g</span><span class="p">(</span><span class="n">Matrice</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">max_iter</span><span class="p">)</span>  <span class="c1"># étape la plus couteuse du code...</span>
+    <span class="n">im</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="kc">True</span> <span class="o">^</span> <span class="n">mask</span><span class="p">)</span>
+
+    <span class="n">im</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">im</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">figname</span><span class="p">)</span></div>
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Recherche rapide</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Index général"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Index des modules Python"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Documentation TP4 1.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Code du module</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">TP4.helper</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, atys and ulysse.
+      Créé en utilisant <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+    </div>
+  </body>
+</html>

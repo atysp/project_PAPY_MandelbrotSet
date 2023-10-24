@@ -1,0 +1,164 @@
+
+
+<!doctype html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>TP4 package &#8212; Documentation TP4 1.0</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bizstyle.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <script src="_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Index général"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Index des modules Python"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Documentation TP4 1.0</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">TP4 package</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="tp4-package">
+<h1>TP4 package<a class="headerlink" href="#tp4-package" title="Lien permanent vers ce titre">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Lien permanent vers ce titre">¶</a></h2>
+</section>
+<section id="module-TP4.helper">
+<span id="tp4-helper-module"></span><h2>TP4.helper module<a class="headerlink" href="#module-TP4.helper" title="Lien permanent vers ce titre">¶</a></h2>
+<p>pour notre premier projet</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="TP4.helper.is_in_Julia">
+<span class="sig-prename descclassname"><span class="pre">TP4.helper.</span></span><span class="sig-name descname"><span class="pre">is_in_Julia</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span> <span class="pre">+</span> <span class="pre">0.25j</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/TP4/helper.html#is_in_Julia"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TP4.helper.is_in_Julia" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Renvoie si un complexe z appartient à l’ensemble de Julia pour c fixé
+&gt;&gt;&gt; is_in_Julia(z=0.25+0.25j,c=0.25)
+True</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TP4.helper.is_in_Mandelbrot">
+<span class="sig-prename descclassname"><span class="pre">TP4.helper.</span></span><span class="sig-name descname"><span class="pre">is_in_Mandelbrot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.251</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/TP4/helper.html#is_in_Mandelbrot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TP4.helper.is_in_Mandelbrot" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Renvoie si un complexe appartient à l’ensemble de Mandelbrot
+&gt;&gt;&gt; is_in_Mandelbrot(c=0.251)
+False</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TP4.helper.plot_julia">
+<span class="sig-prename descclassname"><span class="pre">TP4.helper.</span></span><span class="sig-name descname"><span class="pre">plot_julia</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">0.8</span> <span class="pre">+</span> <span class="pre">0.156j</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">2</span> <span class="pre">-</span> <span class="pre">1j</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span> <span class="pre">+</span> <span class="pre">1j</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixel_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.005</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Julia.png'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/TP4/helper.html#plot_julia"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TP4.helper.plot_julia" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Affiche les nombres complexes compris entre zmin et zmax qui appartiennent à l’ensemble de Julia pour c fixé</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TP4.helper.plot_mandelbrot">
+<span class="sig-prename descclassname"><span class="pre">TP4.helper.</span></span><span class="sig-name descname"><span class="pre">plot_mandelbrot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">zmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">0.744</span> <span class="pre">+</span> <span class="pre">0.1305j</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">0.7425</span> <span class="pre">+</span> <span class="pre">0.132j</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixel_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Mandelbrot.png'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/TP4/helper.html#plot_mandelbrot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TP4.helper.plot_mandelbrot" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Affiche les nombres complexes compris entre zmin et zmax qui appartiennent à l’ensemble de Mandelbrot</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TP4.helper.suite">
+<span class="sig-prename descclassname"><span class="pre">TP4.helper.</span></span><span class="sig-name descname"><span class="pre">suite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">complex</span></span></span><a class="reference internal" href="_modules/TP4/helper.html#suite"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TP4.helper.suite" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Générateur des éléments de la suite $z_{n+1}=z_n^2+c$</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TP4.helper.suite_julia">
+<span class="sig-prename descclassname"><span class="pre">TP4.helper.</span></span><span class="sig-name descname"><span class="pre">suite_julia</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">zandidat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">carametre</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">complex</span></span></span><a class="reference internal" href="_modules/TP4/helper.html#suite_julia"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TP4.helper.suite_julia" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Renvoie la suite de julia pour candidat et parametre</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TP4.helper.suite_mandelbrot">
+<span class="sig-prename descclassname"><span class="pre">TP4.helper.</span></span><span class="sig-name descname"><span class="pre">suite_mandelbrot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/TP4/helper.html#suite_mandelbrot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#TP4.helper.suite_mandelbrot" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Renvoie la suite de Mandelbrot</p>
+</dd></dl>
+
+</section>
+<section id="module-TP4">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-TP4" title="Lien permanent vers ce titre">¶</a></h2>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table des matières</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">TP4 package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-TP4.helper">TP4.helper module</a></li>
+<li><a class="reference internal" href="#module-TP4">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>Cette page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/TP4.rst.txt"
+            rel="nofollow">Montrer le code source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Recherche rapide</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Index général"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Index des modules Python"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Documentation TP4 1.0</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">TP4 package</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, atys and ulysse.
+      Créé en utilisant <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+    </div>
+  </body>
+</html>
